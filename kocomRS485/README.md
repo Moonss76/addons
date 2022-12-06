@@ -4,6 +4,10 @@
 
 ## About
 랜이님이 만든 코콤 월패드 프로그램을 애드온으로 만든 것입니다.
+이것을 수원 광교자연앤힐스테이트 아파트 용으로 수정했습니다.
+
+## Version : 1.1.2
+- var_tpl -> stat_val_tpl
 
 ## Version : 1.1.1
 - auto_uart deprecated. change to uart config
