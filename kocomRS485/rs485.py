@@ -32,13 +32,13 @@ INIT_TEMP = 22
 # 환풍기 초기속도 ['low', 'medium', 'high']
 DEFAULT_SPEED = 'medium'
 # 조명 / 플러그 갯수
-KOCOM_LIGHT_SIZE            = {'livingroom': 3, 'bedroom': 2, 'room1': 2, 'room2': 2, 'kitchen': 3}
-KOCOM_PLUG_SIZE             = {'livingroom': 2, 'bedroom': 2, 'room1': 2, 'room2': 2, 'kitchen': 2}
+KOCOM_LIGHT_SIZE            = {'livingroom': 6, 'bedroom': 2, 'room1': 1, 'room2': 1}
+KOCOM_PLUG_SIZE             = {'livingroom': 2, 'bedroom': 2, 'room1': 2, 'room2': 2}
 
 # 방 패킷에 따른 방이름 (패킷1: 방이름1, 패킷2: 방이름2 . . .)
 # 월패드에서 장치를 작동하며 방이름(livingroom, bedroom, room1, room2, kitchen 등)을 확인하여 본인의 상황에 맞게 바꾸세요
 # 조명/콘센트와 난방의 방패킷이 달라서 두개로 나뉘어있습니다.
-KOCOM_ROOM                  = {'00': 'livingroom', '01': 'bedroom', '02': 'room2', '03': 'room1', '04': 'kitchen'}
+KOCOM_ROOM                  = {'00': 'livingroom', '01': 'bedroom', '02': 'room1', '03': 'room2'}
 KOCOM_ROOM_THERMOSTAT       = {'00': 'livingroom', '01': 'bedroom', '02': 'room1', '03': 'room2'}
 
 # TIME 변수(초)
@@ -550,7 +550,7 @@ class Kocom(rs485):
                 'name': '{}_{}_{}'.format(self._name, 'wallpad', DEVICE_ELEVATOR),
                 'cmd_t': '{}/{}/{}_{}/set'.format(HA_PREFIX, HA_SWITCH, 'wallpad', DEVICE_ELEVATOR),
                 'stat_t': '{}/{}/{}/state'.format(HA_PREFIX, HA_SWITCH, 'wallpad'),
-                'val_tpl': '{{ value_json.' + DEVICE_ELEVATOR + ' }}',
+                'stat_val_tpl': '{{ value_json.' + DEVICE_ELEVATOR + ' }}',
                 'ic': 'mdi:elevator',
                 'pl_on': 'on',
                 'pl_off': 'off',
@@ -576,7 +576,7 @@ class Kocom(rs485):
                 'name': '{}_{}_{}'.format(self._name, 'wallpad', DEVICE_GAS),
                 'cmd_t': '{}/{}/{}_{}/set'.format(HA_PREFIX, HA_SWITCH, 'wallpad', DEVICE_GAS),
                 'stat_t': '{}/{}/{}_{}/state'.format(HA_PREFIX, HA_SWITCH, 'wallpad', DEVICE_GAS),
-                'val_tpl': '{{ value_json.' + DEVICE_GAS + ' }}',
+                'stat_val_tpl': '{{ value_json.' + DEVICE_GAS + ' }}',
                 'ic': 'mdi:gas-cylinder',
                 'pl_on': 'on',
                 'pl_off': 'off',
@@ -601,7 +601,7 @@ class Kocom(rs485):
             ha_payload = {
                 'name': '{}_{}_{}'.format(self._name, 'wallpad', DEVICE_GAS),
                 'stat_t': '{}/{}/{}_{}/state'.format(HA_PREFIX, HA_SENSOR, 'wallpad', DEVICE_GAS),
-                'val_tpl': '{{ value_json.' + DEVICE_GAS + ' }}',
+                'stat_val_tpl': '{{ value_json.' + DEVICE_GAS + ' }}',
                 'ic': 'mdi:gas-cylinder',
                 'uniq_id': '{}_{}_{}'.format(self._name, 'wallpad', DEVICE_GAS),
                 'device': {
@@ -655,7 +655,7 @@ class Kocom(rs485):
                                 'name': '{}_{}_{}'.format(self._name, room, sub_device),
                                 'cmd_t': '{}/{}/{}_{}/set'.format(HA_PREFIX, HA_LIGHT, room, sub_device),
                                 'stat_t': '{}/{}/{}/state'.format(HA_PREFIX, HA_LIGHT, room),
-                                'val_tpl': '{{ value_json.' + str(sub_device) + ' }}',
+                                'stat_val_tpl': '{{ value_json.' + str(sub_device) + ' }}',
                                 'pl_on': 'on',
                                 'pl_off': 'off',
                                 'uniq_id': '{}_{}_{}'.format(self._name, room, sub_device),
@@ -684,7 +684,7 @@ class Kocom(rs485):
                                 'name': '{}_{}_{}'.format(self._name, room, sub_device),
                                 'cmd_t': '{}/{}/{}_{}/set'.format(HA_PREFIX, HA_SWITCH, room, sub_device),
                                 'stat_t': '{}/{}/{}/state'.format(HA_PREFIX, HA_SWITCH, room),
-                                'val_tpl': '{{ value_json.' + str(sub_device) + ' }}',
+                                'stat_val_tpl': '{{ value_json.' + str(sub_device) + ' }}',
                                 'ic': 'mdi:power-socket-eu',
                                 'pl_on': 'on',
                                 'pl_off': 'off',
@@ -1214,7 +1214,7 @@ class Grex:
         ha_payload = {
             'name': '{}_{}_mode'.format(self._name, DEVICE_FAN),
             'stat_t': '{}/{}/{}_{}/state'.format(HA_PREFIX, HA_SENSOR, 'grex', DEVICE_FAN),
-            'val_tpl': '{{ value_json.' + DEVICE_FAN + '_mode }}',
+            'stat_val_tpl': '{{ value_json.' + DEVICE_FAN + '_mode }}',
             'ic': 'mdi:play-circle-outline',
             'uniq_id': '{}_{}_{}_mode'.format(self._name, 'grex', DEVICE_FAN),
             'device': {
@@ -1232,7 +1232,7 @@ class Grex:
         ha_payload = {
             'name': '{}_{}_speed'.format(self._name, DEVICE_FAN),
             'stat_t': '{}/{}/{}_{}/state'.format(HA_PREFIX, HA_SENSOR, 'grex', DEVICE_FAN),
-            'val_tpl': '{{ value_json.' + DEVICE_FAN + '_speed }}',
+            'stat_val_tpl': '{{ value_json.' + DEVICE_FAN + '_speed }}',
             'ic': 'mdi:speedometer',
             'uniq_id': '{}_{}_{}_speed'.format(self._name, 'grex', DEVICE_FAN),
             'device': {
