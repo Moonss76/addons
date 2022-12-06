@@ -1,9 +1,11 @@
 RS485 Compilation
 =================
-Version : 1.0.7
+Version : 1.0.8
 ----------------
 
 ## 패치노트
+### Ver 1.0.8
+> 코콤) rs485.py 파일내 var_tpl -> stat_var_tpl 수정.
 ### Ver 1.0.7
 > 애드온 에러 수정: 알파인에서 python3만 사용해야 함. python 관련 제거
 ### Ver 1.0.2b
