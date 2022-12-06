@@ -1,11 +1,15 @@
 RS485 Compilation
 =================
-Version : 1.0.8
+Version : 1.1.2
 ----------------
 
 ## 패치노트
-### Ver 1.0.8
+### Ver 1.1.2
 > 코콤) rs485.py 파일내 var_tpl -> stat_var_tpl 수정.
+### Ver 1.1.1
+> auto_uart deprecated. change to uart config
+  alpine linux images를 python3 이미지로 교체
+  CPU 최적화 및 딜레이 수정
 ### Ver 1.0.7
 > 애드온 에러 수정: 알파인에서 python3만 사용해야 함. python 관련 제거
 ### Ver 1.0.2b
